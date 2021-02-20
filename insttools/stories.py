@@ -20,13 +20,14 @@ def get_json_with_story(profile_id, cookie):
         'sec-fetch-dest': 'empty',
         'referer': 'https://www.instagram.com/',
         'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-        'cookie': cookie
+        'cookie': cookie,
 }
 
     params_for_stories = (('reel_ids', f'{profile_id}'),)
     response = requests.get('https://i.instagram.com/api/v1/feed/reels_media/',
                             headers=headers_for_stories,
                             params=params_for_stories)
+    # print(response.text)
     with open('jsons/story.json', 'w') as f:
             json.dump(response.json(), f, indent=2)
 
