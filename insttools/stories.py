@@ -21,7 +21,7 @@ def get_json_with_story(profile_id, cookie):
         'referer': 'https://www.instagram.com/',
         'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
         'cookie': cookie,
-}
+    }
 
     params_for_stories = (('reel_ids', f'{profile_id}'),)
     response = requests.get('https://i.instagram.com/api/v1/feed/reels_media/',
@@ -29,7 +29,7 @@ def get_json_with_story(profile_id, cookie):
                             params=params_for_stories)
     # print(response.text)
     with open('jsons/story.json', 'w') as f:
-            json.dump(response.json(), f, indent=2)
+        json.dump(response.json(), f, indent=2)
 
 
 def parse_json_story():
@@ -55,7 +55,7 @@ def download_stories(folder_name):
     print('Trying to download stories')
     for url in all_stories:
         media = requests.get(url)
-        name = url[url.rfind('/')+1:url.find('?')]
+        name = url[url.rfind('/') + 1:url.find('?')]
         with open(f'media/{folder_name}/stories/{name}', 'wb') as f:
             f.write(media.content)
         count_of_download_stories += 1

@@ -36,7 +36,7 @@ def write_cookies_json(username, password):
         except Exception as ex:
             print(ex)
             browser.close()
-            browser.quit() 
+            browser.quit()
 
         cookies = list(browser.get_cookies())
 
@@ -44,9 +44,9 @@ def write_cookies_json(username, password):
         browser.quit()
 
     except Exception as ex:
-            print(ex)
-            browser.close()
-            browser.quit()
+        print(ex)
+        browser.close()
+        browser.quit()
 
     for cookie in cookies:
         data[cookie['name']] = cookie['value']

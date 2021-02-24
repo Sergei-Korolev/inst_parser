@@ -37,7 +37,7 @@ def get_id(PROFILE, headers):
     html = requests.get(url, headers=headers).text
     soup = BeautifulSoup(html, 'html.parser')
     script = soup.find_all('script', type="text/javascript")[3]
-    #print(script)
+    # print(script)
     data = str(script)
     profile_id = data[data.find('[{"logging_page_id":"profilePage_') +
                  len('[{"logging_page_id":"profilePage_'):data.find('","show_suggested_profiles"')]
@@ -112,8 +112,6 @@ def main():
     except Exception as e:
         print(e)
         print('Something wrong')
-    
-    
 
 
 if __name__ == '__main__':

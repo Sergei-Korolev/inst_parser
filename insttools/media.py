@@ -7,7 +7,9 @@ from time import sleep
 
 
 def get_json(profile_id, batch_size, headers):
-    """Takes profile_id, batch_size and headers to write .json with all data of profile"""
+    """Takes profile_id, batch_size and headers to
+    write .json with all data of profile
+    """
     index = 1
     after = None
     photo_in_progress = 0
@@ -45,7 +47,10 @@ def get_json(profile_id, batch_size, headers):
 
 
 def parse_jsons_files():
-    """Parses .json with all data of profile and writes new .json with url of media"""
+    """Parses .json with all data of profile and
+    writes new .json with url of media
+
+    """
     files = glob.glob('jsons/*.json')
     all_media = []
     for f in files:
@@ -75,7 +80,7 @@ def download_media(folder_name):
     print('Trying to download media')
     for media in data:
         item = requests.get(media)
-        name = media[media.rfind('/')+1:media.find('?')]
+        name = media[media.rfind('/') + 1:media.find('?')]
         with open(f'media/{folder_name}/{name}', 'wb') as d:
             d.write(item.content)
         count_of_download_media += 1
